@@ -82,3 +82,14 @@ Route::get('/auth/callback', function () {
 
     return redirect('/dashboard');
 });
+
+
+Route::middleware([
+    'web',
+    \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
+    \Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains::class,
+])->group(function () {
+    Route::get('/test', function () {
+        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+    });
+});
