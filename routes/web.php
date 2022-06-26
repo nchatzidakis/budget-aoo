@@ -9,6 +9,7 @@ use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,4 +54,31 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+});
+
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+})->name('auth.social.google.login');
+
+Route::get('/auth/callback', function () {
+
+    $externalUser = Socialite::driver('google')->user();
+    /*
+     * TODO
+     * Transfer this to a controller and handle the scenario that
+     * a registered user logs in via a google account
+     */
+    $user = \App\Models\User::updateOrCreate([
+        'google_id' => $externalUser->id,
+    ], [
+        'name' => $externalUser->name,
+        'email' => $externalUser->email,
+        'google_token' => $externalUser->token,
+        'google_refresh_token' => $externalUser->refreshToken,
+    ]);
+
+    \Illuminate\Support\Facades\Auth::login($user);
+
+    return redirect('/dashboard');
 });

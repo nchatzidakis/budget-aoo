@@ -23,6 +23,8 @@
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">Register</a>
                         @endif
+
+                        <a href="{{ route('auth.social.google.login') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">Google Login</a>
                     @endauth
                 </div>
             @endif
