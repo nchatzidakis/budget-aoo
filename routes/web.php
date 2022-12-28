@@ -22,7 +22,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])->name('home');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
@@ -56,13 +56,11 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 
-
 Route::get('/auth/redirect', function () {
     return Socialite::driver('google')->redirect();
 })->name('auth.social.google.login');
 
 Route::get('/auth/callback', function () {
-
     $externalUser = Socialite::driver('google')->user();
     /*
      * TODO
@@ -80,16 +78,11 @@ Route::get('/auth/callback', function () {
 
     \Illuminate\Support\Facades\Auth::login($user);
 
-    return redirect('/dashboard');
+    return redirect()->route('tenant.index');
 });
 
-
-Route::middleware([
-    'web',
-    \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::class,
-    \Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains::class,
-])->group(function () {
-    Route::get('/test', function () {
-        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+Route::middleware('auth')
+    ->group(function () {
+        Route::resource('/tenant', \App\Http\Controllers\Panel\TenantController::class)
+            ->except('show');
     });
-});
