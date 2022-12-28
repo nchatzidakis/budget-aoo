@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\TenantStoreRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -22,7 +23,7 @@ class TenantController extends Controller
         return view('tenant.tenant.create');
     }
 
-    public function store(TenantStoreRequest $request): Redirect
+    public function store(TenantStoreRequest $request): RedirectResponse
     {
         $tenant = auth()->user()->tenants()->create([
             'name' => request('name'),
