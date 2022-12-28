@@ -23,11 +23,6 @@ class Tenant extends BaseTenant implements TenantWithDatabase
         return $this->belongsToMany(User::class);
     }
 
-    public function accounts(): HasMany
-    {
-        return $this->hasMany(Account::class);
-    }
-
     public static function getCustomColumns(): array
     {
         return [

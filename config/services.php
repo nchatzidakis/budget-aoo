@@ -37,4 +37,10 @@ return [
         'redirect' => 'http://localhost:692/auth/callback',
     ],
 
+    'nordigen' => [
+        'secret_id' => env('NORDIGEN_SECRET_ID'),
+        'secret_key' => env('NORDIGEN_SECRET_KEY'),
+        'endpoint' => 'https://ob.nordigen.com/api/v2/',
+    ],
+
 ];

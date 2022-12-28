@@ -24,4 +24,13 @@ Route::middleware([
         ->only('show');
 
     Route::resource('tenant/{tenant}/account', \App\Http\Controllers\Tenant\AccountController::class);
+
+    Route::get('tenant/{tenant}/openbank', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'index'])
+        ->name('openbank.index');
+    Route::get('tenant/{tenant}/openbank/create', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'create'])
+        ->name('openbank.create');
+    Route::get('tenant/{tenant}/callback', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'store'])
+        ->name('openbank.callback');
+    Route::get('tenant/{tenant}/openbank/{id}', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'show'])
+        ->name('openbank.show');
 });
