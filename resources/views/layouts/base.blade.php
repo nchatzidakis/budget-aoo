@@ -16,11 +16,11 @@
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}">
+        <link rel="stylesheet" href="{{ url(mix('css/app.css')) }}?{{ date('YmdHis') }}">
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ url(mix('js/app.js')) }}" defer></script>
+        <script src="{{ url(mix('js/app.js')) }}?{{ date('YmdHis') }}" defer></script>
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
