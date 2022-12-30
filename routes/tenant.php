@@ -24,6 +24,7 @@ Route::middleware([
         ->only('show');
 
     Route::resource('tenant/{tenant}/account', \App\Http\Controllers\Tenant\AccountController::class);
+    Route::resource('tenant/{tenant}/category', \App\Http\Controllers\Tenant\CategoryController::class);
 
     Route::get('tenant/{tenant}/openbank', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'index'])
         ->name('openbank.index');
