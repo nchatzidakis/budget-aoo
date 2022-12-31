@@ -2,15 +2,13 @@
 
 <div class="mb-6">
     <label for="transactionAmount" class="block text-sm font-medium text-gray-700">
-        {{ __('Amount') }}
+        {{ __('Amount in cents') }}
     </label>
     <div class="mt-1 flex rounded-md">
         <input type="number"
                name="transactionAmount"
                id="transactionAmount"
-               inputmode="decimal"
-               pattern="(\d+(?:[\.\,]\d+)+)"
-               step="0.01"
+               inputmode="numeric"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                value="{{ old('transactionAmount') ?? $expense->transactionAmount ?? null }}"/>
     </div>
