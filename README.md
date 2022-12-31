@@ -14,3 +14,12 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 - One user will be able to create or manage multiple Verticals, and each Vertical will be managed by one or more users.
 - We will use [multi-tenancy](https://tenancyforlaravel.com/) in order to support multiple users in the same application.
 - We will use Tenants as Verticals in codebase (we alias Tenants to Verticals in order to be understood by users easily)
+
+## TODO
+- Full CRUD for Account, Verticals, Categories
+- Change create expense form ui
+  - First select category then show subcategories
+  - remove radios and add colors
+- Add balances to Accounts, the logic and the service to do the calculations
+- Connect with OpenBank API to sync transactions (for a specific account)
+- Add transaction mapping
