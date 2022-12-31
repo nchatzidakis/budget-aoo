@@ -20,7 +20,7 @@ class ExpenseController extends Controller
     {
         return view('tenant.expense.create', [
             'accounts' => Account::all(),
-            'categories' => Category::all(),
+            'categories' => Category::orderBy('position')->whereNull('parent_id')->get(),
         ]);
     }
 
