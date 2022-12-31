@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware([
     'web',
+    'auth',
     \Stancl\Tenancy\Middleware\InitializeTenancyByPath::class,
 ])->group(function () {
     Route::resource('/tenant', \App\Http\Controllers\Panel\TenantController::class)
@@ -25,6 +26,7 @@ Route::middleware([
 
     Route::resource('tenant/{tenant}/account', \App\Http\Controllers\Tenant\AccountController::class);
     Route::resource('tenant/{tenant}/category', \App\Http\Controllers\Tenant\CategoryController::class);
+    Route::resource('tenant/{tenant}/expense', \App\Http\Controllers\Tenant\ExpenseController::class);
 
     Route::get('tenant/{tenant}/openbank', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'index'])
         ->name('openbank.index');

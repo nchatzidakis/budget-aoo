@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class Card extends Component
 {
     public function __construct(
-        public string $wrapper_css_class = 'w-1/2 mx-auto mt-5',
+        public string $wrapper_css_class = 'w-full mx-auto mt-5',
         public string $title = '',
     ) {
         //
