@@ -29,6 +29,7 @@ class ExpenseController extends Controller
         $input = request()->all();
         $input['transactionAmount'] = request('transactionAmount') / 100;
         //TODO iphone is not working with decimal in form correctly
+        //TODO remove transactionAmount from account currentBalance
         Expense::create($input);
         return redirect()->route('expense.index', tenant());
     }

@@ -9,6 +9,7 @@
                             tenant(),
                             'institution_id' => $institution['id'],
                             'institution_name' => $institution['name'],
+                            'account_id' => $account->id,
                             ]) }}"
                 class="w-1/6 inline-flex">
                     <img src="{{ $institution['logo'] }}" alt="{{ $institution['name'] }}" />

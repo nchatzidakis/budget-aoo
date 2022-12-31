@@ -12,23 +12,24 @@ class NordigenController extends Controller
     public function index()
     {
         $service = new NordigenService();
+        $account = Account::find(request('account_id'));
 
         return view('tenant.openbank.index', [
             'institutions' => $service->getInstitutions('GR'),
+            'account' => $account,
         ]);
     }
 
     public function create()
     {
-
-        $account = Account::create([
-            'name' => request('institution_name'),
-            'type' => 'bankAccountChecking',
-            'currency' => 'EUR',
-            'institution' => request('institution_name'),
-            'initialBalance' => 0,
-        ]);
-
+//        $account = Account::create([
+//            'name' => request('institution_name'),
+//            'type' => 'bankAccountChecking',
+//            'currency' => 'EUR',
+//            'institution' => request('institution_name'),
+//            'initialBalance' => 0,
+//        ]);
+        $account = Account::findOrFail(request('account_id'));
 
         $service = new NordigenService();
         $agreement = $service->createEnduserAgreement(request('institution_id'));
