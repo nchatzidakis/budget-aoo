@@ -8,9 +8,10 @@
         <input type="number"
                name="transactionAmount"
                id="transactionAmount"
-               inputmode="numeric"
-               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+               inputmode="decimal"
+               pattern="(\d+(?:[\.\,]\d+)+)"
                step="0.01"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                value="{{ old('transactionAmount') ?? $expense->transactionAmount ?? null }}"/>
     </div>
     @error('transactionAmount')
