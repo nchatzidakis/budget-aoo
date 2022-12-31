@@ -1,6 +1,6 @@
 @csrf
 
-<div class="w-full">
+<div class="mb-6">
     <label for="transactionAmount" class="block text-sm font-medium text-gray-700">
         {{ __('Amount') }}
     </label>
@@ -8,7 +8,7 @@
         <input type="number"
                name="transactionAmount"
                id="transactionAmount"
-               class="w-full rounded-md border-gray-300"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                step="0.01"
                value="{{ old('transactionAmount') ?? $expense->transactionAmount ?? null }}"/>
     </div>
@@ -19,10 +19,13 @@
     @enderror
 </div>
 
-<div class="w-full">
+<div class="mb-6">
+    <p class="block text-sm font-medium text-gray-700 mb-2">
+        Account
+    </p>
     @foreach ($accounts as $account)
         <label for="account-{{ $account->id }}"
-               class="justify-center rounded-md shadow-sm px-3 py-1 bg-indigo-600 text-white">
+               class="rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white">
             {{ $account->name }}
             <input type="radio"
                    value="{{ $account->id }}"
@@ -39,12 +42,13 @@
     @enderror
 </div>
 
-<div class="w-full">
+<div class="mb-6">
+    <p class="block text-sm font-medium text-gray-700">{{ __('Category') }}</p>
     @foreach ($categories as $category)
-        <h3>{{ $category->name }}</h3>
+        <p class="block text-sm font-medium text-gray-700 mb-1 mt-1">{{ $category->name }}</p>
         @foreach ($category->children as $subCategory)
             <label for="category-{{ $subCategory->id }}"
-                   class="justify-center rounded-md shadow-sm px-3 py-1 bg-indigo-600 text-white">
+                   class="rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white">
                 {{ $subCategory->name }}
                 <input type="radio"
                        value="{{ $subCategory->id }}"
@@ -62,7 +66,7 @@
     @enderror
 </div>
 
-<div class="w-full">
+<div class="mb-6">
     <label for="notes" class="block text-sm font-medium text-gray-700">
         {{ __('Notes') }}
     </label>
@@ -70,7 +74,7 @@
         <input type="text"
                name="notes"
                id="notes"
-               class="w-full rounded-md border-gray-300"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                placeholder="{{ __('i.e. Milk') }}"
                value="{{ old('notes') ?? $account->notes ?? null }}"/>
     </div>
@@ -81,7 +85,7 @@
     @enderror
 </div>
 
-<div class="w-full">
+<div class="mb-6">
     <label for="paid_at" class="block text-sm font-medium text-gray-700">
         {{ __('Payment Date') }}
     </label>
@@ -89,7 +93,7 @@
         <input type="date"
                name="paid_at"
                id="paid_at"
-               class="w-full rounded-md border-gray-300"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                step="0.01"
                value="{{ old('paid_at') ?? $expense->paid_at ?? now()->format('Y-m-d') }}"/>
     </div>
@@ -100,9 +104,7 @@
     @enderror
 </div>
 
-<div class="w-full text-right mt-4">
-    <input type="submit"
-           class=" justify-center rounded-md shadow-sm px-3 py-1 bg-green-500 text-white hover:bg-green-50"
-           value="{{ __('Save') }}">
-</div>
+<input type="submit"
+       class="w-full title-font font-medium text-xl text-white px-4 py-2 rounded-lg bg-green-500"
+       value="{{ __('Save') }}" />
 
