@@ -25,7 +25,7 @@
     </p>
     @foreach ($accounts as $account)
         <label for="account-{{ $account->id }}"
-               class="rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white">
+               class="inline-block rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white whitespace-nowrap">
             {{ $account->name }}
             <input type="radio"
                    value="{{ $account->id }}"
@@ -48,7 +48,7 @@
         <p class="block text-sm font-medium text-gray-700 mb-1 mt-1">{{ $category->name }}</p>
         @foreach ($category->children as $subCategory)
             <label for="category-{{ $subCategory->id }}"
-                   class="rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white">
+                   class="inline-block rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white whitespace-nowrap">
                 {{ $subCategory->name }}
                 <input type="radio"
                        value="{{ $subCategory->id }}"
