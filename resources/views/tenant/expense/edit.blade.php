@@ -2,7 +2,7 @@
 
 @section('content')
     <x-theme.layout.card>
-        <x-slot:title>{{ __('Create Expense') }}</x-slot:title>
+        <x-slot:title>{{ __('Update Expense') }}</x-slot:title>
 
         <form action="{{ route('expense.update', [tenant(), $expense->id]) }}" method="POST">
             @method('PUT')
