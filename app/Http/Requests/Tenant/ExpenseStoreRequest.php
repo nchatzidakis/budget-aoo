@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ExpenseStoreRequest extends FormRequest
 {
-    public function rules()
+    public function rules(): array
     {
         return [
             'category_id' => [

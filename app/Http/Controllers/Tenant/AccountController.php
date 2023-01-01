@@ -28,7 +28,10 @@ class AccountController extends Controller
 
     public function store(AccountStoreRequest $request): RedirectResponse
     {
-        Account::create(request()->all());
+        $input = request()->all();
+        $input['currentBalance'] = $input['initialBalance'];
+        Account::create($input);
+
         return redirect()->route('account.index', tenant());
     }
 

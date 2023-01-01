@@ -10,7 +10,7 @@
                id="transactionAmount"
                inputmode="numeric"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-               value="{{ old('transactionAmount') ?? $expense->transactionAmount ?? null }}"/>
+               value="{{ old('transactionAmount') ?? isset($expense) ? $expense->transactionAmount*100 : null }}"/>
     </div>
     @error('transactionAmount')
     <div class="w-full">
@@ -95,7 +95,7 @@
                id="paid_at"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                step="0.01"
-               value="{{ old('paid_at') ?? $expense->paid_at ?? now()->format('Y-m-d') }}"/>
+               value="{{ old('paid_at') ?? isset($expense) ? $expense->paid_at->format('Y-m-d') : now()->format('Y-m-d') }}"/>
     </div>
     @error('paid_at')
     <div class="w-full">
