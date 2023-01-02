@@ -26,7 +26,7 @@
     @foreach ($accounts as $account)
         <label for="account-{{ $account->id }}"
                class="inline-block rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white whitespace-nowrap">
-            {{ $account->name }}
+            {{ $account->name }} ({{ $account->institution }})
             <input type="radio"
                    value="{{ $account->id }}"
                    name="account_id"
