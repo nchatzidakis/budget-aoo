@@ -18,11 +18,14 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 ## TODO
 - Income functionality - **Priority 1**
 - Bills functionality - **Priority 1**
-- Full CRUD for Account, Verticals, Categories - **Priority 2**
+- Full CRUD Verticals, Categories - **Priority 2**
 - Change create expense form ui
     - First select category then show subcategories
     - remove radios and add colors
 - Add balances to Accounts, the logic and the service to do the calculations
 - Connect with OpenBank API to sync transactions (for a specific account)
 - Add transaction mapping
+- Add alerts when updating DB **Priority 3**
+- Accounts: show (probably list history of expenses and incomes) **Priority 3**
+- Accounts: delete **Priority 5**
 - Tenants: delete **Priority 5**

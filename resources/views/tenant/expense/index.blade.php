@@ -6,8 +6,9 @@
 
         <x-form.button-wide
             route="{{ route('expense.create', tenant()) }}"
-            color="green"
-            value="{{ __('Create Expense') }}" />
+            color="green">
+            {{ __('Create Expense') }}
+        </x-form.button-wide>
 
         @foreach($expenses as $expense)
             <div class="w-full py-1 mb-1 border-1 border-b">

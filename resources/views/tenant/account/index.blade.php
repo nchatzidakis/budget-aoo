@@ -24,7 +24,7 @@
                                 {{ $account->currentBalance }} &euro;
                             </p>
                             <p class="leading-relaxed mt-3">
-                                <a href="{{ route('tenant.edit', tenant()) }}" class="block-inline text-sm text-yellow-500 border border-yellow-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
+                                <a href="{{ route('account.edit', [tenant(), $account->id]) }}" class="block-inline text-sm text-yellow-500 border border-yellow-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     {{ __('Edit') }}
                                 </a>
@@ -39,21 +39,20 @@
                                         {{ __('Transactions') }}
                                     </a>
                                 @endif
-                                <a class="block-inline text-sm text-red-600 border border-red-600 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
-                                    <i class="fa-solid fa-trash"></i>
-                                    {{ __('Delete') }}
-                                </a>
+{{--                                <a class="block-inline text-sm text-red-600 border border-red-600 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">--}}
+{{--                                    <i class="fa-solid fa-trash"></i>--}}
+{{--                                    {{ __('Delete') }}--}}
+{{--                                </a>--}}
                             </p>
                         </div>
                     </div>
                 @endforeach
-                <div class="p-4 w-full">
-                    <a href="{{ route('account.create', tenant()) }}" class="title-font font-medium text-3xl text-white">
-                        <div class="border-2 border-green-600 px-4 py-6 rounded-lg bg-green-500">
-                            <i class="fa-solid fa-plus text-white"></i> {{ __('Create') }}
-                        </div>
-                    </a>
-                </div>
+
+                <x-form.button-wide
+                    route="{{ route('account.create', tenant()) }}"
+                    color="green">
+                    <i class="fa-solid fa-plus text-white"></i> {{ __('Create') }}
+                </x-form.button-wide>
             </div>
     </section>
 @endsection

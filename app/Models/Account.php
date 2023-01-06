@@ -12,6 +12,7 @@ class Account extends Model
         'type',
         'currency',
         'initialBalance',
+        'currentBalance',
         'meta',
     ];
 

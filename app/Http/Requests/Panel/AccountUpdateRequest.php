@@ -6,8 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AccountUpdateRequest extends FormRequest
 {
-    public function rules()
+    public function rules(): array
     {
-        return AccountStoreRequest::rules();
+        return (new AccountStoreRequest())->rules();
     }
 }

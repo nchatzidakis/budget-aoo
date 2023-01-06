@@ -9,7 +9,6 @@
             @include('tenant.expense.form')
         </form>
 
-
         <form method="post" action="{{ route('expense.destroy', [tenant(), $expense->id]) }}" class="inline-block">
             @csrf
             @method('DELETE')
