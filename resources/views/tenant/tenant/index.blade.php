@@ -12,21 +12,22 @@
                 @foreach ($tenants as $tenant)
                     <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
                         <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-                            <i class="fa-solid fa-puzzle-piece text-5xl"></i>
-                            <p class="leading-relaxed mt-3">
-                                <a href="{{ route('tenant.show', $tenant) }}" class="title-font font-medium text-3xl text-gray-900">
-                                    {{ $tenant->name }}
-                                </a>
-                            </p>
-                            <p class="leading-relaxed mt-3">
+                            <a href="{{ route('tenant.show', $tenant) }}" class="title-font font-medium text-3xl text-gray-800">
+                                <i class="fa-solid fa-puzzle-piece text-5xl"></i>
+                                <br />
+                                <span class="leading-relaxed mt-3">
+                                        {{ $tenant->name }}
+                                </span>
+                            </a>
+                            <p class="leading-relaxed mt-5">
                                 <a href="{{ route('tenant.edit', $tenant) }}" class="text-sm text-yellow-500 border border-yellow-500 rounded px-2 py-1 mx-2">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     {{ __('Edit') }}
                                 </a>
-                                <a class="text-sm text-red-600 border border-red-600 rounded px-2 py-1 mx-2">
-                                    <i class="fa-solid fa-trash"></i>
-                                    {{ __('Permanently Delete') }}
-                                </a>
+{{--                                <a class="text-sm text-red-600 border border-red-600 rounded px-2 py-1 mx-2">--}}
+{{--                                    <i class="fa-solid fa-trash"></i>--}}
+{{--                                    {{ __('Permanently Delete') }}--}}
+{{--                                </a>--}}
                             </p>
                         </div>
                     </div>

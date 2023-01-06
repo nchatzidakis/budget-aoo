@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Panel;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\TenantStoreRequest;
+use App\Http\Requests\Panel\TenantUpdateRequest;
+use App\Models\Tenant;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class TenantController extends Controller
@@ -37,36 +38,24 @@ class TenantController extends Controller
         return view('tenant.tenant.show');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($id): View
     {
-        //
+        return view('tenant.tenant.edit', [
+            'tenant' => auth()->user()->tenants()->findOrFail($id),
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(TenantUpdateRequest $request, $id): RedirectResponse
     {
-        //
+        $tenant = auth()->user()->tenants()->findOrFail($id);
+        $tenant->update([
+            'name' => request('name'),
+        ]);
+
+        return redirect()->route('tenant.show', $tenant);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($id): RedirectResponse
     {
         //
     }
