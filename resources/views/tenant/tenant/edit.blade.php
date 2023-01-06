@@ -2,7 +2,10 @@
 
 @section('content')
     <x-theme.layout.card>
-        <x-slot:title>{{ __('Edit Vertical') }}</x-slot:title>
+        <x-slot:title>
+            {{ __('Edit Vertical') }}
+            <x-form.back-button route="{{ route('tenant.index') }}"/>
+        </x-slot:title>
 
         <form action="{{ route('tenant.update', $tenant->id) }}" method="POST">
             @method('PUT')

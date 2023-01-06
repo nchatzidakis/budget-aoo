@@ -25,4 +25,4 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 - Add balances to Accounts, the logic and the service to do the calculations
 - Connect with OpenBank API to sync transactions (for a specific account)
 - Add transaction mapping
-- Delete Tenant - **Priority 5**
+- Tenants: delete **Priority 5**

@@ -37,16 +37,20 @@ class AccountController extends Controller
 
     public function edit(): View
     {
-        return view('tenant.account.create');
+        return view('tenant.account.edit');
     }
 
-    public function update(AccountUpdateRequest $request): Redirect
+    public function update(AccountUpdateRequest $request): RedirectResponse
     {
-        return view('tenant.account.create');
+        $input = request()->all();
+        $input['currentBalance'] = $input['initialBalance'];
+        Account::find()->update($input);
+
+        return redirect()->route('account.index', tenant());
     }
 
-    public function destroy(): Redirect
+    public function destroy(): RedirectResponse
     {
-        return view('tenant.account.create');
+        //
     }
 }
