@@ -16,7 +16,6 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 - We will use Tenants as Verticals in codebase (we alias Tenants to Verticals in order to be understood by users easily)
 
 ## TODO
-- Income functionality - **Priority 1**
 - Bills functionality - **Priority 1**
 - Transfers functionality - **Priority 1**
 - Expenses UI improvements + CRUD - **Priority 2**
@@ -31,6 +30,7 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 - Accounts: show (probably list history of expenses and incomes) **Priority 3**
 - Accounts: delete **Priority 5**
 - Tenants: delete **Priority 5**
+- Income Sources in a separate table **Priority 6**
 
 ## Screenshots
 

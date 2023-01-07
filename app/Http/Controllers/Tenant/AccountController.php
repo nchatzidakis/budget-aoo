@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Panel\AccountStoreRequest;
-use App\Http\Requests\Panel\AccountUpdateRequest;
+use App\Http\Requests\Tenant\AccountStoreRequest;
+use App\Http\Requests\Tenant\AccountUpdateRequest;
 use App\Models\Account;
-use App\Services\NordigenService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class AccountController extends Controller

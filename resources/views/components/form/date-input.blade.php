@@ -3,17 +3,11 @@
         {{ __($label) }}
     </label>
     <div class="mt-1 flex rounded-md">
-        <input type="number"
+        <input type="date"
                name="{{ $name }}"
                id="{{ $id ?? $name }}"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-               value="{{ old($name) ?? $value }}"
-               placeholder="{{ __($placeholder) }}"
-               @if ($inputmode)
-                   inputmode="{{ $inputmode }}"
-               @endif
-               step="{{ $step }}"
-        />
+               value="{{ old($name) ?? $value }}" />
 
     </div>
 
