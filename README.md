@@ -18,7 +18,9 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 ## TODO
 - Income functionality - **Priority 1**
 - Bills functionality - **Priority 1**
-- Full CRUD Verticals, Categories - **Priority 2**
+- Transfers functionality - **Priority 1**
+- Expenses UI improvements + CRUD - **Priority 2**
+- Categories UI Improvements + CRUD - **Priority 2**
 - Change create expense form ui
     - First select category then show subcategories
     - remove radios and add colors
@@ -29,3 +31,16 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 - Accounts: show (probably list history of expenses and incomes) **Priority 3**
 - Accounts: delete **Priority 5**
 - Tenants: delete **Priority 5**
+
+## Screenshots
+
+Supports both desktop and mobile
+
+### Verticals dashboard
+![Verticals dashboard](public/readme/img/verticals.png)
+
+### Accounts dashboard
+![Accounts dashboard](public/readme/img/accounts.png)
+
+### Expense form in mobile
+![Expense Form](public/readme/img/expense-form.png)
