@@ -1,63 +1,75 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-theme.layout.card>
-        <x-slot:title>{{ __('Categories') }}</x-slot:title>
-        <p>
-            <ul>
+
+    <x-theme.page-header
+        h1="{{ __('Categories') }}"
+        h2="{{ __('Here you can manage the categories.') }}"
+    />
+
+        <div class="w-5/6 mx-auto mt-5">
+            <table class="w-full text-sm text-left">
+                <thead class="text-xs text-gray-700 uppercase">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 bg-gray-50 ">
+                            {{ __('Category') }}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{ now()->format('Y') }}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{ now()->subMonth()->format('Y m') }}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{ now()->format('Y m') }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
                 @foreach ($categories as $category)
-                    <li>
-                        <a href="#">
-                            - {{ $category->name }}
-
-                            <a href="{{ route('category.edit', [tenant(), $category->id]) }}" class="text-sm text-yellow-500 border border-yellow-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                                {{ __('Edit') }}
+                    <tr class="border-b border-gray-200">
+                        <th scope="row" class="pl-2 pr-1 py-2 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
+                            <a href="{{ route('category.edit', [tenant(), $category->id]) }}" class="whitespace-nowrap">
+                                {{ $category->name }}
                             </a>
-                            @if (!$category->children->count())
-                                <form method="post" action="{{ route('category.destroy', [tenant(), $category->id]) }}" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="block-inline text-sm text-red-600 border border-red-600 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
-                                        <i class="fa-solid fa-trash"></i>
-                                        {{ __('Delete') }}
-                                    </button>
-                                </form>
-                            @endif
-                        </a>
-                        @if ($category->children->count())
-                            <ul>
-                                @foreach ($category->children as $child)
-                                    <li>
-                                        <a href="#">
-                                            - - {{ $child->name }}
-                                        </a>
+                        </th>
+                        <td class="px-1"></td>
+                        <td class="px-1"></td>
+                        <td class="px-1"></td>
+                    </tr>
 
-                                        <a href="{{ route('category.edit', [tenant(), $child->id]) }}" class="text-sm text-yellow-500 border border-yellow-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                            {{ __('Edit') }}
-                                        </a>
-                                        @if (!$child->expenses->count())
-                                            <form method="post" action="{{ route('category.destroy', [tenant(), $child->id]) }}" class="inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="block-inline text-sm text-red-600 border border-red-600 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                    {{ __('Delete') }}
-                                                </button>
-                                            </form>
-                                        @endif
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </li>
+                    @if ($category->children->count())
+                        @foreach ($category->children as $child)
+                            <tr class="border-b border-gray-200">
+                                <th scope="row" class="pl-4 pr-1 py-2 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
+                                    <a href="{{ route('category.edit', [tenant(), $child->id]) }}" class="whitespace-nowrap">
+                                        {{ $child->name }}
+                                    </a>
+                                </th>
+                                <td class="px-1">
+                                    {{ $child->expenses->whereBetween('paid_at', [now()->startOfYear(), now()->endOfYear()])->sum('transactionAmount') }} &euro;
+                                </td>
+                                <td class="px-1">
+                                    {{ $child->expenses->whereBetween('paid_at', [now()->subMonth()->startOfMonth(), now()->subMonth()->endOfMonth()])->sum('transactionAmount') }} &euro;
+                                </td>
+                                <td class="px-1">
+                                    {{ $child->expenses->whereBetween('paid_at', [now()->startOfMonth(), now()->endOfMonth()])->sum('transactionAmount') }} &euro;
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endforeach
-            </ul>
-            <a href="{{ route('category.create', tenant()) }}"
-               class="bg-green-500 text-white rounded px-3 py-1 mt-2 text-sm">
-                {{ __('Create category') }}
-            </a>
-        </p>
-    </x-theme.layout.card>
+                </tbody>
+            </table>
+        </div>
+
+
+    <div class="w-5/6 mx-auto mt-5">
+        <x-form.button-wide
+            route="{{ route('category.create', tenant()) }}"
+            color="green">
+            {{ __('Create category') }}
+        </x-form.button-wide>
+    </div>
+
 @endsection
