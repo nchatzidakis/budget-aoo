@@ -49,6 +49,11 @@
                             Accounts
                         </a>
                         <a
+                            href="{{ route('transfer.index', tenant()) }}"
+                            class="whitespace-nowrap mr-3 text-indigo-600">
+                            Transfers
+                        </a>
+                        <a
                             href="{{ route('category.index', tenant()) }}"
                             class="whitespace-nowrap mr-3 text-indigo-600">
                             Categories

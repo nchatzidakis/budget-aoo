@@ -17,7 +17,6 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 
 ## TODO
 - Bills functionality - **Priority 1**
-- Transfers functionality - **Priority 1**
 - Expenses UI improvements + CRUD - **Priority 2**
 - Categories UI Improvements + CRUD - **Priority 2**
 - Change create expense form ui

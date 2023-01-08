@@ -32,17 +32,16 @@ class AccountController extends Controller
         return redirect()->route('account.index', tenant());
     }
 
-    public function edit($id): View
+    public function edit(Account $account): View
     {
         return view('tenant.account.edit', [
-            'account' => Account::findOrFail($id),
+            'account' => $account,
         ]);
     }
 
-    public function update(AccountUpdateRequest $request, $id): RedirectResponse
+    public function update(AccountUpdateRequest $request, Account $account): RedirectResponse
     {
         $input = request()->all();
-        $account = Account::findOrFail($id);
 
         $oldInitialBalance = $account->initialBalance;
         $newInitialBalance = $input['initialBalance'];

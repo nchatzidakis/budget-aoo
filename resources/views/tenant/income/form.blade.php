@@ -10,8 +10,7 @@
     name="transactionAmount"
     value="{{ $income->transactionAmount ?? 0 }}"
     label="Amount in cents"
-    inputmode="numeric"
-    step="0.01" />
+    inputmode="numeric" />
 
 <x-form.radio-button-input
     name="account_id"
