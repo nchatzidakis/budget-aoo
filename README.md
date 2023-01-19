@@ -23,7 +23,7 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
     - First select category then show subcategories
     - remove radios and add colors
 - Add balances to Accounts, the logic and the service to do the calculations
-- Connect with OpenBank API to sync transactions (for a specific account)
+- Connect with Banks API to sync transactions (for a specific account)
 - Add transaction mapping
 - Add alerts when updating DB **Priority 3**
 - Accounts: show (probably list history of expenses and incomes) **Priority 3**
