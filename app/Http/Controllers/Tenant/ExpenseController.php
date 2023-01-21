@@ -65,6 +65,7 @@ class ExpenseController extends Controller
 
         $expense = Expense::find($id);
 
+        // TODO: BUG when changing account!!!!
         $expense->account->currentBalance = $expense->account->currentBalance + $expense->transactionAmount - $input['transactionAmount'];
         $expense->account->save();
 
