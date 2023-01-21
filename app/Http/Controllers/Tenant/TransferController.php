@@ -15,7 +15,7 @@ class TransferController extends Controller
     public function index(): View
     {
         return view('tenant.transfer.index', [
-            'transfers' => Transfer::all(),
+            'transfers' => Transfer::orderByDesc('transferred_at')->get(),
         ]);
     }
 

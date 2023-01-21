@@ -6,7 +6,7 @@
         @foreach ($values as $vKey=>$vValue)
             <label for="{{ $name }}-{{ $vKey}}"
                    class="inline-block rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white whitespace-nowrap">
-                {{ $vValue }})
+                {{ $vValue }}
                 <input type="radio"
                        value="{{ $vKey }}"
                        name="{{ $name }}"
