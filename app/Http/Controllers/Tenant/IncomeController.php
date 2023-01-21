@@ -11,6 +11,7 @@ use App\Models\Account;
 use App\Models\Category;
 use App\Models\Expense;
 use App\Models\Income;
+use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -29,7 +30,7 @@ class IncomeController extends Controller
     public function create(): View
     {
         return view('tenant.income.create', [
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
         ]);
     }
 
@@ -51,7 +52,7 @@ class IncomeController extends Controller
     {
         return view('tenant.income.edit', [
             'income' => Income::find($id),
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
         ]);
     }
 

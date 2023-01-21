@@ -8,6 +8,7 @@ use App\Http\Requests\Tenant\ExpenseUpdateRequest;
 use App\Models\Account;
 use App\Models\Category;
 use App\Models\Expense;
+use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -26,7 +27,7 @@ class ExpenseController extends Controller
     public function create(): View
     {
         return view('tenant.expense.create', [
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
             'categories' => Category::orderBy('position')->whereNull('parent_id')->get(),
         ]);
     }
@@ -49,7 +50,7 @@ class ExpenseController extends Controller
     {
         return view('tenant.expense.edit', [
             'expense' => Expense::find($id),
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
             'categories' => Category::orderBy('position')->whereNull('parent_id')->get(),
         ]);
     }

@@ -7,6 +7,7 @@ use App\Http\Requests\Tenant\TransferStoreRequest;
 use App\Http\Requests\Tenant\TransferUpdateRequest;
 use App\Models\Account;
 use App\Models\Transfer;
+use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -23,7 +24,7 @@ class TransferController extends Controller
     {
 
         return view('tenant.transfer.create', [
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
         ]);
     }
 
@@ -47,7 +48,7 @@ class TransferController extends Controller
     {
         return view('tenant.transfer.edit', [
             'transfer' => $transfer,
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
         ]);
     }
 

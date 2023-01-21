@@ -8,6 +8,7 @@ use App\Http\Requests\Tenant\BillUpdateRequest;
 use App\Models\Account;
 use App\Models\Bill;
 use App\Models\Category;
+use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -25,7 +26,7 @@ class BillController extends Controller
     public function create(): View
     {
         return view('tenant.bill.create', [
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
             'categories' => Category::orderBy('position')->whereNull('parent_id')->get(),
         ]);
     }
@@ -49,7 +50,7 @@ class BillController extends Controller
         }
         return view('tenant.bill.edit', [
             'bill' => $bill,
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
             'categories' => Category::orderBy('position')->whereNull('parent_id')->get(),
         ]);
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Tenant\AccountStoreRequest;
 use App\Http\Requests\Tenant\AccountUpdateRequest;
 use App\Models\Account;
+use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -14,7 +15,7 @@ class AccountController extends Controller
     public function index(): View
     {
         return view('tenant.account.index', [
-            'accounts' => Account::all(),
+            'accounts' => AccountRepository::allByRecent(),
         ]);
     }
 
