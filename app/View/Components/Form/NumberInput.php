@@ -14,8 +14,7 @@ class NumberInput extends Component
         public string|null $value = null,
         public null|string $inputmode = null,
         public float|int $step = 1,
-    )
-    {
+    ) {
     }
 
     public function render()

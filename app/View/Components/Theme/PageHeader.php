@@ -9,8 +9,7 @@ class PageHeader extends Component
     public function __construct(
         public string $h1,
         public string $h2,
-    )
-    {
+    ) {
     }
 
     public function render()

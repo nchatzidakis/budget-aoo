@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -24,12 +23,12 @@ class Bill extends Model
         'expires_at' => 'datetime',
     ];
 
-    function category(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    function account(): BelongsTo
+    public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }

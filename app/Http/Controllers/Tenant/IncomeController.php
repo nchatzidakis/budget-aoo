@@ -3,17 +3,11 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Tenant\ExpenseStoreRequest;
-use App\Http\Requests\Tenant\ExpenseUpdateRequest;
 use App\Http\Requests\Tenant\IncomeStoreRequest;
 use App\Http\Requests\Tenant\IncomeUpdateRequest;
-use App\Models\Account;
-use App\Models\Category;
-use App\Models\Expense;
 use App\Models\Income;
 use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class IncomeController extends Controller
@@ -22,6 +16,7 @@ class IncomeController extends Controller
     {
         // TODO Datatable with livewire or other async
         $incomes = Income::orderByDesc('paid_at')->limit(100)->get();
+
         return view('tenant.income.index', [
             'incomes' => $incomes,
         ]);

@@ -11,15 +11,15 @@ class ExpenseStoreRequest extends FormRequest
         return [
             'category_id' => [
                 'required',
-                'exists:categories,id'
+                'exists:categories,id',
             ],
             'account_id' => [
                 'required',
-                'exists:accounts,id'
+                'exists:accounts,id',
             ],
             'transactionAmount' => [
                 'required',
-                'numeric'
+                'numeric',
             ],
             'paid_at' => 'required',
         ];

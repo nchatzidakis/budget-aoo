@@ -21,12 +21,12 @@ class Transfer extends Model
         'transferred_at' => 'datetime',
     ];
 
-    function sourceAccount(): BelongsTo
+    public function sourceAccount(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
 
-    function destinationAccount(): BelongsTo
+    public function destinationAccount(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }

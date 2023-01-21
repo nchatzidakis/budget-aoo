@@ -11,15 +11,15 @@ class BillStoreRequest extends FormRequest
         return [
             'category_id' => [
                 'required',
-                'exists:categories,id'
+                'exists:categories,id',
             ],
             'account_id' => [
                 'nullable',
-                'exists:accounts,id'
+                'exists:accounts,id',
             ],
             'transactionAmount' => [
                 'required',
-                'numeric'
+                'numeric',
             ],
             'paid_at' => 'nullable',
             'expires_at' => 'nullable',

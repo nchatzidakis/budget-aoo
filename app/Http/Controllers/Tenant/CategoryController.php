@@ -28,6 +28,7 @@ class CategoryController extends Controller
     public function store(CategoryStoreRequest $request): RedirectResponse
     {
         Category::create(request()->all());
+
         return redirect()->route('category.create', tenant());
     }
 
@@ -43,6 +44,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->update(request()->all());
+
         return redirect()->route('category.index', tenant());
     }
 
@@ -50,6 +52,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
+
         return redirect()->route('category.index', tenant());
     }
 }

@@ -21,7 +21,7 @@ class Income extends Model
         'paid_at' => 'datetime',
     ];
 
-    function account(): BelongsTo
+    public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }

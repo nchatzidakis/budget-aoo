@@ -22,17 +22,17 @@ class Expense extends Model
         'paid_at' => 'datetime',
     ];
 
-    function category(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    function account(): BelongsTo
+    public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
 
-    function bill(): BelongsTo
+    public function bill(): BelongsTo
     {
         return $this->belongsTo(Bill::class);
     }

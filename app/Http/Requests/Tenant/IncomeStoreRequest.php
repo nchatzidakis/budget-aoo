@@ -14,14 +14,14 @@ class IncomeStoreRequest extends FormRequest
             ],
             'account_id' => [
                 'required',
-                'exists:accounts,id'
+                'exists:accounts,id',
             ],
             'transactionAmount' => [
                 'required',
                 'numeric',
             ],
             'paid_at' => [
-                'required'
+                'required',
             ],
         ];
     }

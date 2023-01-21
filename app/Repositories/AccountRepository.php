@@ -2,13 +2,11 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Account;
 
 class AccountRepository
 {
-
-    static function allByRecent()
+    public static function allByRecent()
     {
         return Account::orderByDesc('updated_at')->get();
     }

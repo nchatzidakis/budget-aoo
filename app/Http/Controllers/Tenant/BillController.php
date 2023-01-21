@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tenant\BillStoreRequest;
 use App\Http\Requests\Tenant\BillUpdateRequest;
-use App\Models\Account;
 use App\Models\Bill;
 use App\Models\Category;
 use App\Repositories\AccountRepository;
@@ -18,6 +17,7 @@ class BillController extends Controller
     {
         // TODO Datatable with livewire or other async
         $bills = Bill::orderByDesc('expires_at')->limit(100)->get();
+
         return view('tenant.bill.index', [
             'bills' => $bills,
         ]);
@@ -48,6 +48,7 @@ class BillController extends Controller
         if ($bill->paid_at) {
             abort(403);
         }
+
         return view('tenant.bill.edit', [
             'bill' => $bill,
             'accounts' => AccountRepository::allByRecent(),

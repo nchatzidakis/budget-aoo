@@ -11,23 +11,23 @@ class AccountStoreRequest extends FormRequest
     {
         return [
             'name' => [
-                'required'
+                'required',
             ],
             'institution' => [
                 'required',
             ],
             'type' => [
                 'required',
-                Rule::in(array_keys(config('custom.account.type')))
+                Rule::in(array_keys(config('custom.account.type'))),
             ],
             'currency' => [
                 'required',
-                Rule::in(array_keys(config('custom.app.currency')))
+                Rule::in(array_keys(config('custom.app.currency'))),
             ],
             'initialBalance' => [
                 'required',
                 'numeric',
-            ]
+            ],
         ];
     }
 }

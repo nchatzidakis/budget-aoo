@@ -9,8 +9,7 @@ class ButtonWide extends Component
     public function __construct(
         public $route,
         public $color,
-    )
-    {
+    ) {
     }
 
     public function render()

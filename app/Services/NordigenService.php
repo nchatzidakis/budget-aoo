@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Models\Account;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -13,58 +12,59 @@ class NordigenService
 
     public function __construct()
     {
-        $this->access_token = Cache::remember('nordigen-RANDUSERID', 86400, function() {
+        $this->access_token = Cache::remember('nordigen-RANDUSERID', 86400, function () {
             $response = $this->getToken();
+
             return $response['access'];
         });
     }
 
-    function getToken(): array|\Exception
+    public function getToken(): array|\Exception
     {
         $response = Http::post(config('services.nordigen.endpoint').'token/new/', [
             'secret_id' => config('services.nordigen.secret_id'),
             'secret_key' => config('services.nordigen.secret_key'),
         ]);
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             return throw new \Exception('Failed to get token.');
         }
 
         return $response->json();
     }
 
-    function getInstitutions(string $country): array
+    public function getInstitutions(string $country): array
     {
         $response = Http::withToken($this->access_token)
             ->get(config('services.nordigen.endpoint').'institutions', [
                 'country' => $country,
             ]);
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             return throw new \Exception('Failed to get institutions.');
         }
 
         return $response->json();
     }
 
-    function createEnduserAgreement(string $institution_id): array
+    public function createEnduserAgreement(string $institution_id): array
     {
         $response = Http::withToken($this->access_token)
             ->post(config('services.nordigen.endpoint').'agreements/enduser/', [
                 'institution_id' => $institution_id,
                 'max_historical_days' => '365',
                 'access_valid_for_days' => '90',
-                'access_scope' => ['balances','details','transactions'],
+                'access_scope' => ['balances', 'details', 'transactions'],
             ]);
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             return throw new \Exception('Failed to get institutions.'.$response->status());
         }
 
         return $response->json();
     }
 
-    function createRequisitions(array $agreement, Account $account): array
+    public function createRequisitions(array $agreement, Account $account): array
     {
         $response = Http::withToken($this->access_token)
             ->post(config('services.nordigen.endpoint').'requisitions/', [
@@ -78,7 +78,7 @@ class NordigenService
         return $response->json();
     }
 
-    function getRequisitions(array $requisition): array
+    public function getRequisitions(array $requisition): array
     {
         $response = Http::withToken($this->access_token)
             ->get(config('services.nordigen.endpoint').'requisitions/'.$requisition['id'].'/');
@@ -86,7 +86,7 @@ class NordigenService
         return $response->json();
     }
 
-    function getAccountTransactions(array $accounts): array
+    public function getAccountTransactions(array $accounts): array
     {
         $response = Http::withToken($this->access_token)
             ->get(config('services.nordigen.endpoint').'accounts/'.$accounts['accounts'][0].'/transactions/');
@@ -94,7 +94,7 @@ class NordigenService
         return $response->json();
     }
 
-    function getAccountDetails(array $accounts): array
+    public function getAccountDetails(array $accounts): array
     {
         $response = Http::withToken($this->access_token)
             ->get(config('services.nordigen.endpoint').'accounts/'.$accounts['accounts'][0].'/details/');
@@ -102,7 +102,7 @@ class NordigenService
         return $response->json();
     }
 
-    function getAccountBalances(array $accounts): array
+    public function getAccountBalances(array $accounts): array
     {
         $response = Http::withToken($this->access_token)
             ->get(config('services.nordigen.endpoint').'accounts/'.$accounts['accounts'][0].'/balances/');

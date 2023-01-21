@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\TenantStoreRequest;
 use App\Http\Requests\Panel\TenantUpdateRequest;
-use App\Models\Tenant;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class TenantController extends Controller

@@ -13,8 +13,7 @@ class TextInput extends Component
         public $id = null,
         public $placeholder = null,
         public $value = null
-    )
-    {
+    ) {
     }
 
     public function render(): View

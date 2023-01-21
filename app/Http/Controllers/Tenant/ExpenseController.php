@@ -5,12 +5,10 @@ namespace App\Http\Controllers\Tenant;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Tenant\ExpenseStoreRequest;
 use App\Http\Requests\Tenant\ExpenseUpdateRequest;
-use App\Models\Account;
 use App\Models\Category;
 use App\Models\Expense;
 use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ExpenseController extends Controller
@@ -19,6 +17,7 @@ class ExpenseController extends Controller
     {
         // TODO Datatable with livewire or other async
         $expenses = Expense::orderByDesc('paid_at')->limit(100)->get();
+
         return view('tenant.expense.index', [
             'expenses' => $expenses,
         ]);

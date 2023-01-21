@@ -13,8 +13,7 @@ class Select extends Component
         public array $values,
         public string|null $id = null,
         public string|null $value = null
-    )
-    {
+    ) {
     }
 
     public function render(): View

@@ -38,10 +38,9 @@ class NordigenController extends Controller
         $account->meta = [
             'id' => request('institution_id'),
             'agreement' => $agreement,
-            'requisition' => $requisition
+            'requisition' => $requisition,
         ];
         $account->save();
-
 
         return redirect($requisition['link']);
     }

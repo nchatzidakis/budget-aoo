@@ -11,18 +11,18 @@ class TransferStoreRequest extends FormRequest
         return [
             'source_account_id' => [
                 'required',
-                'exists:accounts,id'
+                'exists:accounts,id',
             ],
             'destination_account_id' => [
                 'required',
-                'exists:accounts,id'
+                'exists:accounts,id',
             ],
             'transactionAmount' => [
                 'required',
                 'numeric',
             ],
             'transferred_at' => [
-                'required'
+                'required',
             ],
         ];
     }

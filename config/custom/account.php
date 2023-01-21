@@ -6,5 +6,5 @@ return [
         'creditCard' => 'Credit Card',
         'bankAccountChecking' => 'Checking Bank Account',
         'bankAccountSavings' => 'Savings Bank Account',
-    ]
+    ],
 ];

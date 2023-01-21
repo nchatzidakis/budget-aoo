@@ -20,17 +20,17 @@ class Category extends Model
         'meta' => 'array',
     ];
 
-    function children(): HasMany
+    public function children(): HasMany
     {
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
-    function parent(): BelongsTo
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    function expenses(): HasMany
+    public function expenses(): HasMany
     {
         return $this->hasMany(Expense::class);
     }
