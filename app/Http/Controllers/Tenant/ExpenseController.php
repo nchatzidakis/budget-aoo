@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Tenant;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Tenant\ExpenseIndexRequest;
 use App\Http\Requests\Tenant\ExpenseStoreRequest;
 use App\Http\Requests\Tenant\ExpenseUpdateRequest;
 use App\Models\Category;
@@ -13,10 +14,13 @@ use Illuminate\View\View;
 
 class ExpenseController extends Controller
 {
-    public function index(): View
+    public function index(ExpenseIndexRequest $request): View
     {
         // TODO Datatable with livewire or other async
-        $expenses = Expense::orderByDesc('paid_at')->limit(100)->get();
+        $expenses = Expense::orderByDesc('paid_at')
+            ->limit(100)
+            ->when(request()->has('account_id'), fn ($query) => $query->where('account_id', request('account_id')))
+            ->get();
 
         return view('tenant.expense.index', [
             'expenses' => $expenses,

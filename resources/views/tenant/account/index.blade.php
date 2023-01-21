@@ -13,7 +13,7 @@
                     <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
                         <div class="border-2 border-gray-200 px-2 py-6 rounded-lg">
                             <p class="leading-relaxed mt-3">
-                                <a href="{{ route('account.show', [tenant(), $account]) }}" class="title-font font-medium text-2xl text-gray-900">
+                                <a href="{{ route('expense.index', [tenant(), 'account_id' => $account->id]) }}" class="title-font font-medium text-2xl text-gray-900">
                                     {{ $account->name }}
                                 </a>
                             </p>
