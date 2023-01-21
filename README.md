@@ -16,7 +16,6 @@ This is a budget app that will be based on [TALL](https://tallstack.dev/).
 - We will use Tenants as Verticals in codebase (we alias Tenants to Verticals in order to be understood by users easily)
 
 ## TODO
-- Bills functionality - **Priority 1**
 - Expenses UI improvements + CRUD - **Priority 2**
 - Categories UI Improvements + CRUD - **Priority 2**
 - Change create expense form ui

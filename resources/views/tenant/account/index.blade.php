@@ -29,12 +29,12 @@
                                     {{ __('Edit') }}
                                 </a>
                                 @if (!(isset($account->meta['requisition']['status']) && $account->meta['requisition']['status'] == 'CR'))
-                                    <a href="{{ route('openbank.index', [tenant(), 'account_id' => $account->id]) }}" class="block-inline text-sm text-gray-500 border border-gray-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
+                                    <a href="{{ route('nordigen.index', [tenant(), 'account_id' => $account->id]) }}" class="block-inline text-sm text-gray-500 border border-gray-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
                                         <i class="fa-solid fa-building-columns"></i>
                                         {{ __('Connect') }}
                                     </a>
                                 @else
-                                    <a href="{{ route('openbank.show', [tenant(), 'id' => $account->id]) }}" class="block-inline text-sm text-indigo-500 border border-indigo-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
+                                    <a href="{{ route('nordigen.show', [tenant(), 'id' => $account->id]) }}" class="block-inline text-sm text-indigo-500 border border-indigo-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">
                                         <i class="fa-solid fa-table"></i>
                                         {{ __('Transactions') }}
                                     </a>

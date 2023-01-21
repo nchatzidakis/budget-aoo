@@ -2,7 +2,7 @@
     <label for="{{ $id ?? $name }}" class="block text-sm font-medium text-gray-700">
         {{ __($label) }}
     </label>
-    <div class="mt-1 flex rounded-md">
+    <div class="mt-1 rounded-md">
         @foreach ($values as $vKey=>$vValue)
             <label for="{{ $name }}-{{ $vKey}}"
                    class="inline-block rounded-sm px-2 py-2 mr-2 mb-2 bg-gray-500 text-white whitespace-nowrap">

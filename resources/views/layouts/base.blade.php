@@ -39,6 +39,11 @@
                             Expenses
                         </a>
                         <a
+                            href="{{ route('bill.index', tenant()) }}"
+                            class="whitespace-nowrap mr-3 text-indigo-600">
+                            Bills
+                        </a>
+                        <a
                             href="{{ route('income.index', tenant()) }}"
                             class="whitespace-nowrap mr-3 text-indigo-600">
                             Incomes

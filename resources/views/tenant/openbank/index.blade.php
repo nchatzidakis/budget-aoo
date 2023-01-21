@@ -5,7 +5,7 @@
         <x-slot:title>{{ __('Please select a bank') }}</x-slot:title>
         <p>
             @foreach ($institutions as $institution)
-                <a href="{{ route('openbank.create', [
+                <a href="{{ route('nordigen.create', [
                             tenant(),
                             'institution_id' => $institution['id'],
                             'institution_name' => $institution['name'],

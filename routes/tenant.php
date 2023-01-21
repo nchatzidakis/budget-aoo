@@ -27,15 +27,16 @@ Route::middleware([
     Route::resource('tenant/{tenant}/account', \App\Http\Controllers\Tenant\AccountController::class);
     Route::resource('tenant/{tenant}/category', \App\Http\Controllers\Tenant\CategoryController::class);
     Route::resource('tenant/{tenant}/expense', \App\Http\Controllers\Tenant\ExpenseController::class);
+    Route::resource('tenant/{tenant}/bill', \App\Http\Controllers\Tenant\BillController::class);
     Route::resource('tenant/{tenant}/income', \App\Http\Controllers\Tenant\IncomeController::class);
     Route::resource('tenant/{tenant}/transfer', \App\Http\Controllers\Tenant\TransferController::class);
 
-    Route::get('tenant/{tenant}/openbank', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'index'])
-        ->name('openbank.index');
-    Route::get('tenant/{tenant}/openbank/create', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'create'])
-        ->name('openbank.create');
+    Route::get('tenant/{tenant}/nordigen', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'index'])
+        ->name('nordigen.index');
+    Route::get('tenant/{tenant}/nordigen/create', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'create'])
+        ->name('nordigen.create');
     Route::get('tenant/{tenant}/callback', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'store'])
-        ->name('openbank.callback');
-    Route::get('tenant/{tenant}/openbank/{id}', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'show'])
-        ->name('openbank.show');
+        ->name('nordigen.callback');
+    Route::get('tenant/{tenant}/nordigen/{id}', [\App\Http\Controllers\Tenant\Services\NordigenController::class, 'show'])
+        ->name('nordigen.show');
 });
