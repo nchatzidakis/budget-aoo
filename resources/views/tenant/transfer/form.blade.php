@@ -2,7 +2,7 @@
 
 <x-form.number-input
     name="transactionAmount"
-    value="{{ $transfer->transactionAmount ?? 0 }}"
+    value="{{ isset($transfer) ? $transfer->transactionAmount*100 :  0 }}"
     label="Amount in cents"
     inputmode="numeric" />
 
