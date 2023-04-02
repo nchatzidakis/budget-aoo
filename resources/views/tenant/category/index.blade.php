@@ -18,6 +18,12 @@
                             {{ now()->format('Y') }}
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            {{ now()->subMonths(3)->format('Y m') }}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            {{ now()->subMonths(2)->format('Y m') }}
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             {{ now()->subMonth()->format('Y m') }}
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -36,6 +42,8 @@
                         <td class="px-1"></td>
                         <td class="px-1"></td>
                         <td class="px-1"></td>
+                        <td class="px-1"></td>
+                        <td class="px-1"></td>
                     </tr>
 
                     @if ($category->children->count())
@@ -48,6 +56,12 @@
                                 </th>
                                 <td class="px-1">
                                     {{ $child->expenses->whereBetween('paid_at', [now()->startOfYear(), now()->endOfYear()])->sum('transactionAmount') }} &euro;
+                                </td>
+                                <td class="px-1">
+                                    {{ $child->expenses->whereBetween('paid_at', [now()->subMonths(3)->startOfMonth(), now()->subMonths(3)->endOfMonth()])->sum('transactionAmount') }} &euro;
+                                </td>
+                                <td class="px-1">
+                                    {{ $child->expenses->whereBetween('paid_at', [now()->subMonths(2)->startOfMonth(), now()->subMonths(2)->endOfMonth()])->sum('transactionAmount') }} &euro;
                                 </td>
                                 <td class="px-1">
                                     {{ $child->expenses->whereBetween('paid_at', [now()->subMonth()->startOfMonth(), now()->subMonth()->endOfMonth()])->sum('transactionAmount') }} &euro;
