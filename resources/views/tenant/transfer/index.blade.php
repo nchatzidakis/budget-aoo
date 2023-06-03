@@ -14,7 +14,9 @@
             <div class="w-full py-1 mb-1 border-1 border-b">
                 <a href="{{ route('transfer.edit', [tenant(), $transfer->id]) }}">
                     <span class="font-light">
-                        {{ $transfer->sourceAccount->name }} > {{ $transfer->destinationAccount->name }}
+                        [{{ $transfer->sourceAccount->institution }} {{ $transfer->sourceAccount->name }}]
+                        >
+                        [{{ $transfer->destinationAccount->institution }} {{ $transfer->destinationAccount->name }}]
                     </span>
                     <span class="font-bold float-right">
                         {{ $transfer->transactionAmount }} &euro;
