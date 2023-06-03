@@ -14,8 +14,13 @@ class TransferController extends Controller
 {
     public function index(): View
     {
+        $transfers = Transfer::orderByDesc('transferred_at')
+            ->when(request()->has('source_account_id'), fn ($query) => $query->where('source_account_id', request('source_account_id')))
+            ->when(request()->has('destination_account_id'), fn ($query) => $query->where('destination_account_id', request('destination_account_id')))
+            ->get();
+
         return view('tenant.transfer.index', [
-            'transfers' => Transfer::orderByDesc('transferred_at')->get(),
+            'transfers' => $transfers,
         ]);
     }
 
