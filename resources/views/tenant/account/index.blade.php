@@ -40,11 +40,6 @@
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     {{ __('Transfer To') }}
                                 </a>
-
-                                <a href="{{ route('expense.index', [tenant(), 'account_id' => $account->id]) }}" class="title-font font-medium text-2xl text-gray-900">
-                                    {{ $account->name }}
-                                </a>
-
 {{--                                @if (!(isset($account->meta['requisition']['status']) && $account->meta['requisition']['status'] == 'CR'))--}}
 {{--                                    <a href="{{ route('nordigen.index', [tenant(), 'account_id' => $account->id]) }}" class="block-inline text-sm text-gray-500 border border-gray-500 rounded px-2 py-1 mx-2 mb-2 whitespace-nowrap">--}}
 {{--                                        <i class="fa-solid fa-building-columns"></i>--}}
