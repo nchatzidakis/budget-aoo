@@ -8,14 +8,14 @@ use App\Http\Requests\Tenant\AccountUpdateRequest;
 use App\Models\Account;
 use App\Repositories\AccountRepository;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use \Illuminate\Contracts\View\View;
 
 class AccountController extends Controller
 {
     public function index(): View
     {
         return view('tenant.account.index', [
-            'accounts' => AccountRepository::allByRecent(),
+            'accounts' => AccountRepository::all(),
         ]);
     }
 

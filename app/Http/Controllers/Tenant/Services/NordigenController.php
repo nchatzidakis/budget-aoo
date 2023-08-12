@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Tenant\Services;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Transaction;
 use App\Services\NordigenService;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class NordigenController extends Controller
 
     public function store()
     {
-        return redirect()->route('openbank.show', [tenant(), request('ref')]);
+        return redirect()->route('nordigen.show', [tenant(), request('ref')]);
     }
 
     public function show($id)
@@ -61,6 +62,16 @@ class NordigenController extends Controller
 //            $service->getAccountBalances($accounts)
 //        );
         $transactions = $service->getAccountTransactions($accounts);
+
+        collect($transactions['transactions']['booked'])->each(fn($transaction) => Transaction::updateOrCreate([
+            'transactionId' => $transaction['transactionId']
+        ], [
+            'account_id' => $id,
+            'transactionAmount' => $transaction['transactionAmount']['amount'],
+            'notes' => $transaction['additionalInformation'],
+            'meta' => $transaction,
+            'paid_at' => $transaction['bookingDate'],
+        ]));
 
         return view('tenant.openbank.show', [
             'transactions' => $transactions['transactions'],

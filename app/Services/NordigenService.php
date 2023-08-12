@@ -12,11 +12,8 @@ class NordigenService
 
     public function __construct()
     {
-        $this->access_token = Cache::remember('nordigen-RANDUSERID', 86400, function () {
-            $response = $this->getToken();
-
-            return $response['access'];
-        });
+        $response = $this->getToken();
+        $this->access_token = $response['access'];
     }
 
     public function getToken(): array|\Exception
@@ -69,7 +66,7 @@ class NordigenService
         $response = Http::withToken($this->access_token)
             ->post(config('services.nordigen.endpoint').'requisitions/', [
                 'institution_id' => $agreement['institution_id'],
-                'redirect' => route('openbank.callback', tenant()),
+                'redirect' => route('nordigen.callback', tenant()),
                 'reference' => $account->id,
                 'agreement' => $agreement['id'],
                 'user_language' => 'EN',

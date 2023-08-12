@@ -40,7 +40,7 @@ return [
     'nordigen' => [
         'secret_id' => env('NORDIGEN_SECRET_ID'),
         'secret_key' => env('NORDIGEN_SECRET_KEY'),
-        'endpoint' => 'https://ob.nordigen.com/api/v2/',
+        'endpoint' => 'https://bankaccountdata.gocardless.com/api/v2/',
     ],
 
 ];

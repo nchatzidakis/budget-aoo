@@ -21,8 +21,7 @@
                     <td>{{ $transaction['valueDate'] }}</td>
                     <td>{{ $transaction['transactionAmount']['amount'] }}</td>
                     <td>{{ $transaction['transactionAmount']['currency'] }}</td>
-                    <td>{{ $transaction['remittanceInformationUnstructured'] ?? '-' }}</td>
-                    <td>{{ $transaction['proprietaryBankTransactionCode'] }}</td>
+                    <td>{{ $transaction['additionalInformation'] ?? '-' }}</td>
                     <td>{{ $transaction['internalTransactionId'] }}</td>
                 </tr>
             @endforeach
